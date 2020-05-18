@@ -17,13 +17,13 @@ ActiveRecord::Schema.define(version: 2020_05_18_155351) do
 
   create_table "properties", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.string "type"
+    t.string "property_type"
     t.string "location"
     t.string "name"
     t.text "description"
     t.float "price"
     t.integer "capacity"
-    t.boolean "availability"
+    t.boolean "availability", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_properties_on_user_id"
