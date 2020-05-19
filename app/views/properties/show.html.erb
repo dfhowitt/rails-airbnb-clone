@@ -34,10 +34,9 @@
     <div class="row">
       <div class="property-details col-8">
         <div class="property-info border-bottom">
-          <h3>Hosted By: <%= @property.user.name%> </h3>
-            <p> <%= @property.property_type %> -- Capacity: <%= @property.capacity %></p>
+          <h3>Host: <%= @property.user.name%> </h3>
+            <p> <strong> <%= @property.property_type %> </strong>-- Capacity: <%= @property.capacity %></p>
         </div>
-        <%#= cl_image_tag property.owner.photo.key, width: 150, height: 150, crop: :thumb, gravity: :face%>
         <div class="property-desctription">
           <%= @property.description %>
         </div>
@@ -46,16 +45,17 @@
       <div class="property-booking-tool col-4 border">
         <div class="booking-tool-header">
           <div class="price-header">
-            <%= @property.price %>
+             <p> £ <%= @property.price %> / night </p>
           </div>
-          <div class="dates d-flex justify-content-between">
+          <div class="dates w-100">
             <%= render 'bookings/form', booking: Booking.new, property: @property %>
           </div>
         </div>
 
-        <div class="price">
+<!-- TODO calculate price based on form input -->
+<!--         <div class="price">
           <div class="price-per-night d-flex justify-content-between">
-            <p>Price PN</p>
+            <p>£ <%= @property.price %> * Nights</p>
             <p>Total price</p>
           </div>
           <div class="fees d-flex justify-content-between border-bottom">
@@ -65,9 +65,9 @@
           <div class="total-price d-flex justify-content-between">
             <p>Total Due</p>
             <p><%= @property.price  %> * # of nights</p>
-
         </div>
       </div>
+       -->
     </div>
   </div>
 
