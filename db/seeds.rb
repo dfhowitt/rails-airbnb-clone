@@ -12,6 +12,7 @@ require "open-uri"
 #   email: "dfhowitt@gmail.com",
 #   password: 'blehbleh'
 #   )
+Booking.destroy_all
 Property.destroy_all
 types = ['Island', 'Penthouse', 'Villa', 'Luxury Tent', 'Mansion', 'Estate']
 price_range = (1000..10000).to_a
