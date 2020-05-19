@@ -1,9 +1,27 @@
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), <%=cl_image_path 'https://res.cloudinary.com/dezrxo3qo/image/upload/v1589895990/background_njhgsm.jpg'  %>)" >
+  <h1>AirBnB</h1>
+  <h4>Find your luxurious getaway</h4>
+  </div>
 
-<div class="container">
-  <h2>List of luxurious properties</h2>
-  <%@properties.each do |property|%>
+  <div class="seach-bar">
+    <input type="text" placeholder="Search our properties..">
+  </div>
+
+  <h2>Recently Added</h2>
+  <% new_properties = @properties.sort_by {|obj| obj.created_at} %>
+  <% new_properties = new_properties.first(3) %>
+
+  <%new_properties.each do |property|%>
   <div class="property-card">
-    <%= property.name %>
+    <% if property.photos.attached? %>
+      <div class="property-card-photo"><%= cl_image_tag property.photos[0].key, height: 200, width: 200, crop: :fill %>
+      </div>
+    <% end %>
+    <div class="property-card-info">
+      <h3><%= link_to property.name, property_path(property)%> - <%= property.location %></h3>
+      <h4><%= property.property_type %> - <%= property.capacity%> persons</h4>
+      <h6>£<%= property.price.to_i %>/night</h6>
+      <p> <%= property.description.capitalize %></p>
+    </div>
   </div>
   <% end %>
-</div>
