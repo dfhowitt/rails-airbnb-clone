@@ -49,13 +49,7 @@
             <%= @property.price %>
           </div>
           <div class="dates d-flex justify-content-between">
-            <!-- <p>check-in</p> -->
-            <!-- <p>check-out</p> -->
-            <%#= render 'form' %>
             <%= render 'bookings/form', booking: Booking.new, property: @property %>
-          </div>
-          <div class="book">
-            <i class="btn btn-primary">Book</i>
           </div>
         </div>
 
