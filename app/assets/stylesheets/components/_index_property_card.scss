@@ -1,11 +1,16 @@
 .index-property-card {
   overflow: hidden;
-  height: 200px;
+  height: 150px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
-  margin: 24px;
+  margin: 0px 24px 24px 24px;
+  color: black;
+  width: 600px;
+  &:last-of-type {
+    margin-bottom: 0px;
+  }
 }
 
 .index-property-card img {
