@@ -2,12 +2,12 @@
 <div class="container">
   <h2>Luxurious Properties</h2>
   <%@properties.each do |property|%>
-  <div class="property-card">
+  <div class="index-property-card">
     <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80"/>
-    <div class="card-product-infos">
+    <div class="index-card-product-infos">
       <h1><%= property.name %></h1>
       <h2><%= property.description.capitalize %></h2>
-      <h2 class="property-card-price">£<%= property.price %>/Week</h2>
+      <h2 class="index-property-card-price">£<%= property.price %>/Week</h2>
     </div>
 
   </div>
