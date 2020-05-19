@@ -1,5 +1,11 @@
-<%= simple_form_for [@property, @booking] do |f| %>
-    <%= f.input :start_date %>
-    <%= f.input :end_date %>
-    <%= f.submit "Submit" %>
-<% end %>
+<div class="devise-form bg-info col-md-8 col-sm-10 mx-auto mt-3 py-3 rounded">
+  <h2 class="text-center">Create a new booking for <span class="bg-success px-2 rounded text-info"><%= @property.name %></span></h2>
+
+  <hr>
+
+  <%= simple_form_for [@property, @booking] do |f| %>
+      <%= f.input :start_date %>
+      <%= f.input :end_date %>
+      <%= f.submit "Submit", {class: "btn btn-primary w-100 mb-2"} %>
+  <% end %>
+</div>
