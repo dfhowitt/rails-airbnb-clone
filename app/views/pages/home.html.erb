@@ -9,7 +9,7 @@
 
   <h2>Recently Added</h2>
   <% new_properties = @properties.sort_by {|obj| obj.created_at} %>
-  <% new_properties = new_properties.first(3) %>
+  <% new_properties = new_properties %>
 
   <%new_properties.each do |property|%>
   <div class="homepage-property-card">
