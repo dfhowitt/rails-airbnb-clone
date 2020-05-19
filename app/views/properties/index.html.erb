@@ -1,17 +1,21 @@
 
 <div class="container">
   <h2>Luxurious Properties</h2>
-  <%@properties.each do |property|%>
-  <div class="property-card">
-    <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80"/>
-    <div class="card-product-infos">
-      <h1><%= property.name %></h1>
-      <h2><%= property.description.capitalize %></h2>
-      <h2 class="property-card-price">£<%= property.price %>/Week</h2>
+  <div class="d-flex">
+    <div class="card-holder">
+      <%@properties.each do |property|%>
+        <div class="index-property-card">
+          <%= cl_image_tag property.photos.first.key, height: 300, width: 400, crop: :fill %>
+          <div class="index-card-product-infos">
+            <h1><%= property.name %></h1>
+            <h2><%= property.description.capitalize %></h2>
+            <h2 class="index-property-card-price">£<%= property.price %>/Week</h2>
+          </div>
+        </div>
+      <% end %>
     </div>
-
+    <img id="map" src='https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.3381,48.8693,10.45,0,0/600x1000?access_token=pk.eyJ1IjoiZ3VzLXQyNyIsImEiOiJjazlvYmlhYzgwYTh3M25vOGtpenVpOHE0In0.bn0KuBfLkQ7DXflf-mE5RA'>
   </div>
-  <% end %>
 </div>
 
 <footer>

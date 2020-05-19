@@ -1,25 +1,30 @@
-.property-card {
+.index-property-card {
   overflow: hidden;
-  height: 200px;
+  height: 150px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
-  margin: 24px;
+  margin: 0px 24px 24px 24px;
+  color: black;
+  width: 600px;
+  &:last-of-type {
+    margin-bottom: 0px;
+  }
 }
 
-.property-card img {
+.index-property-card img {
   height: 100%;
   width: 120px;
   object-fit: cover;
 }
 
-.property-card h2 {
+.index-property-card h2 {
   font-size: 16px;
   margin: 0;
 }
 
-.property-card p {
+.index-property-card p {
   font-size: 12px;
   line-height: 1.4;
   opacity: .7;
@@ -27,12 +32,12 @@
   margin-top: 8px;
 }
 
-.property-card .card-product-infos {
+.index-property-card .index-card-product-infos {
   padding: 16px;
   position: relative;
 }
 
-.property-card-price {
+.index-property-card-price {
   padding: 16px;
   display: flex;
   justify-content: space-between;
