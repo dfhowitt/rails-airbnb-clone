@@ -12,12 +12,12 @@
   <% new_properties = new_properties.first(3) %>
 
   <%new_properties.each do |property|%>
-  <div class="property-card">
+  <div class="homepage-property-card">
     <% if property.photos.attached? %>
-      <div class="property-card-photo"><%= cl_image_tag property.photos[0].key, height: 200, width: 200, crop: :fill %>
+      <div class="homepage-property-card-photo"><%= cl_image_tag property.photos[0].key, height: 200, width: 200, crop: :fill %>
       </div>
     <% end %>
-    <div class="property-card-info">
+    <div class="homepage-property-card-info">
       <h3><%= link_to property.name, property_path(property)%> - <%= property.location %></h3>
       <h4><%= property.property_type %> - <%= property.capacity%> persons</h4>
       <h6>£<%= property.price.to_i %>/night</h6>
