@@ -1,13 +1,86 @@
-<%= @property.name %>
-<%= @property.user.name%>
-<%= @property.property_type %>
-<%= @property.location %>
-<%= @property.capacity %>
-<%= @property.description %>
-<%= @property.price %>
-<%= @property.availability %>
-<%#= @property.photo %>
+<div class="container">
+  <div class="property-header">
+    <div class="property-title">
+      <h1><%= @property.name %></h1>
+    </div>
+    <div class="property-links d-flex justify-content-between">
+      <p><%= @property.location %></p>
+      <div class="quick-links">
+        <i>⏫ share</i>
+        <i>♥️ save</i>
+      </div>
+    </div>
+  </div>
 
-<% @property.photos.each do |photo| %>
-  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-<% end %>
+  <div class="photo-container border-bottom">
+    <div class="row">
+      <div class="col-6">
+        <%= cl_image_tag @property.photos[0].key, height: 300, width: 400, crop: :fit %>
+      </div>
+      <div class="col-3">
+        <% @property.photos[1..2].each do |photo| %>
+          <%= cl_image_tag photo.key, height: 150, width: 200, crop: :fit %>
+        <% end %>
+      </div>
+      <div class="col-3">
+        <% @property.photos[3..4].each do |photo| %>
+          <%= cl_image_tag photo.key, height: 150, width: 200, crop: :fit %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="property-body mt-5">
+    <div class="row">
+      <div class="property-details col-8">
+        <div class="property-info border-bottom">
+          <h3>Hosted By: <%= @property.user.name%> </h3>
+            <p> <%= @property.property_type %> -- Capacity: <%= @property.capacity %></p>
+        </div>
+        <%#= cl_image_tag property.owner.photo.key, width: 150, height: 150, crop: :thumb, gravity: :face%>
+        <div class="property-desctription">
+          <%= @property.description %>
+        </div>
+      </div>
+
+      <div class="property-booking-tool col-4 border">
+        <div class="booking-tool-header">
+          <div class="price-header">
+            <%= @property.price %>
+          </div>
+          <div class="dates d-flex justify-content-between">
+            <!-- <p>check-in</p> -->
+            <!-- <p>check-out</p> -->
+            <%#= render 'form' %>
+            <%= render 'bookings/form', booking: Booking.new, property: @property %>
+          </div>
+          <div class="book">
+            <i class="btn btn-primary">Book</i>
+          </div>
+        </div>
+
+        <div class="price">
+          <div class="price-per-night d-flex justify-content-between">
+            <p>Price PN</p>
+            <p>Total price</p>
+          </div>
+          <div class="fees d-flex justify-content-between border-bottom">
+            <p>Fees</p>
+            <p>£35</p>
+          </div>
+          <div class="total-price d-flex justify-content-between">
+            <p>Total Due</p>
+            <p><%= @property.price  %> * # of nights</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+</div>
