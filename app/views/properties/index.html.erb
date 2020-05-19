@@ -5,7 +5,9 @@
     <div class="card-holder">
       <%@properties.each do |property|%>
         <div class="index-property-card">
-          <%= cl_image_tag property.photos.first.key, height: 300, width: 400, crop: :fill %>
+          <% if property.photos.attached? %>
+            <%= cl_image_tag property.photos.first.key, height: 300, width: 400, crop: :fill %>
+          <% end %>
           <div class="index-card-product-infos">
             <h1><%= property.name %></h1>
             <h2><%= property.description.capitalize %></h2>
