@@ -1,6 +1,6 @@
 .navbar {
   justify-content: space-between;
-  background: white;
+  background: rgb(20,20,30);
 }
 
 .navbar .navbar-collapse {
@@ -10,3 +10,9 @@
 .navbar .navbar-brand img {
   width: 40px;
 }
+
+.navbar .nav-item active {
+  color: #e1b531;
+}
+
+
