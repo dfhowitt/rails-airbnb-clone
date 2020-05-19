@@ -1,15 +1,19 @@
-  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), <%=cl_image_path 'https://res.cloudinary.com/dezrxo3qo/image/upload/v1589895990/background_njhgsm.jpg'  %>)" >
-  <h1>AirBnB</h1>
-  <h4>Find your luxurious getaway</h4>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+url('<%= cl_image_path "background_njhgsm", height: 600, crop: :fill %>')">
+  <div class="title">
+    <h1>AirBnB</h1>
+    <h4>Find your luxurious getaway</h4>
   </div>
 
   <div class="seach-bar">
     <input type="text" placeholder="Search our properties..">
   </div>
+</div>
 
+<div class="container">
   <h2>Recently Added</h2>
   <% new_properties = @properties.sort_by {|obj| obj.created_at} %>
-  <% new_properties = new_properties.first(3) %>
+  <% new_properties = new_properties %>
 
   <%new_properties.each do |property|%>
   <div class="homepage-property-card">
@@ -25,3 +29,4 @@
     </div>
   </div>
   <% end %>
+</div>

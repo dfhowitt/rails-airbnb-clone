@@ -2,9 +2,6 @@ class BookingsController < ApplicationController
   before_action :find_booking, only: [:show, :destroy]
   before_action :find_property, only: [:create, :new]
 
-  def index
-  end
-
   def show
   end
 

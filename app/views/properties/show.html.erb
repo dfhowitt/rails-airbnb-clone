@@ -12,23 +12,9 @@
     </div>
   </div>
 
-  <div class="photo-container border-bottom">
-    <div class="row">
-      <div class="col-6">
-        <%= cl_image_tag @property.photos[0].key, height: 300, width: 400, crop: :fit %>
-      </div>
-      <div class="col-3">
-        <% @property.photos[1..2].each do |photo| %>
-          <%= cl_image_tag photo.key, height: 150, width: 200, crop: :fit %>
-        <% end %>
-      </div>
-      <div class="col-3">
-        <% @property.photos[3..4].each do |photo| %>
-          <%= cl_image_tag photo.key, height: 150, width: 200, crop: :fit %>
-        <% end %>
-      </div>
-    </div>
-  </div>
+  <% if @property.photos.attached? %>
+    <%= render 'shared/img_carousel' %>
+  <% end %>
 
   <div class="property-body mt-5">
     <div class="row">
@@ -51,6 +37,10 @@
             <%= render 'bookings/form', booking: Booking.new, property: @property %>
           </div>
         </div>
+
+
+
+
 
 <!-- TODO calculate price based on form input -->
 <!--         <div class="price">
