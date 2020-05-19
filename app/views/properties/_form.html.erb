@@ -1,10 +1,27 @@
-<%= simple_form_for @property do |f| %>
-<%= f.input :name %>
-<%= f.input :property_type %>
-<%= f.input :location %>
-<%= f.input :description %>
-<%= f.input :price %>
-<%= f.input :capacity %>
-<%= f.input :availability %>
-<%= f.submit 'Register your luxurious property!'%>
-<% end %>
+<div class="devise-form bg-info col-md-8 col-sm-10 mx-auto mt-3 py-3 rounded">
+  <% if @property.id.nil? %>
+    <h2 class="text-center">Create a new property</h2>
+  <% else %>
+    <h2 class="text-center">Edit your property</h2>
+  <% end %>
+
+  <hr>
+
+  <%= simple_form_for @property do |f| %>
+    <%= f.input :name,          input_html: { placeholder: "Enter a name for your property" } %>
+    <%= f.input :property_type,
+                collection: ['Island', 'Penthouse', 'Villa', 'Luxury Tent', 'Mansion', 'Estate'],
+                prompt: "-- Select the correct property type --" %>
+    <%= f.input :location,      input_html: { placeholder: "Enter the property location, e.g. \"33 Charter Avenue\"" } %>
+    <%= f.input :description,   input_html: { placeholder: "Describe the property" } %>
+    <%= f.input :price,         input_html: { placeholder: "Enter the day rate for your property" } %>
+    <%= f.input :capacity,      input_html: { placeholder: "How many people can the property hold" } %>
+    <%= f.input :availability, label: 'Would you like to make this property immediately available?' %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+    <% if @property.id.nil? %>
+      <%= f.submit 'Register your luxurious property!', {class: "btn btn-primary w-100 mb-2"} %>
+    <% else %>
+      <%= f.submit 'Save changes', {class: "btn btn-primary w-100 mb-2"} %>
+    <% end %>
+  <% end %>
+</div>

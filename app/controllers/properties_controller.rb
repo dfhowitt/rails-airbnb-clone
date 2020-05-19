@@ -26,7 +26,7 @@ class PropertiesController < ApplicationController
   end
 
   def update
-    if @property.save
+    if @property.update(property_params)
       redirect_to property_path(@property)
     else
       render :edit
@@ -45,6 +45,6 @@ class PropertiesController < ApplicationController
   end
 
   def property_params
-    params.require(:property).permit(:owner_id, :type, :location, :name, :description, :price, :capacity, :availability)
+    params.require(:property).permit(:owner_id, :type, :location, :name, :description, :price, :capacity, :availability, photos: [])
   end
 end
