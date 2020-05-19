@@ -1,1 +1,13 @@
 <%= @property.name %>
+<%= @property.user.name%>
+<%= @property.property_type %>
+<%= @property.location %>
+<%= @property.capacity %>
+<%= @property.description %>
+<%= @property.price %>
+<%= @property.availability %>
+<%#= @property.photo %>
+
+<% @property.photos.each do |photo| %>
+  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+<% end %>
