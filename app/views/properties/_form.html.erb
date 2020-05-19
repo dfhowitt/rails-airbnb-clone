@@ -6,5 +6,7 @@
 <%= f.input :price %>
 <%= f.input :capacity %>
 <%= f.input :availability %>
+<%= f.input :photos, as: :file, input_html: { multiple: true } %>
+
 <%= f.submit 'Register your luxurious property!'%>
 <% end %>
