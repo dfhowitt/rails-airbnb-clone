@@ -1,5 +1,6 @@
-<div class="devise-form col-lg-4 offset-lg-4">
-  <h2>Log in</h2>
+<div class="devise-form bg-info col-lg-4 col-md-8 col-sm-10 mx-auto mt-3 py-3 rounded">
+  <h2 class="text-center">Log in</h2>
+  <hr>
 
   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-inputs">
@@ -14,7 +15,7 @@
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, "Log in", {class: "btn btn-primary"}%>
+      <%= f.button :submit, "Log in", {class: "btn btn-primary w-100 mb-2"} %>
     </div>
   <% end %>
 

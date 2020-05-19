@@ -1,0 +1,8 @@
+hr {
+    border-color: white;
+}
+
+.form-control:focus {
+  border-color: #eaf4f5;
+  box-shadow: 0 0 0 0.2rem rgba(148, 197, 204, 0.25);
+}
