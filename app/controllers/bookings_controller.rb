@@ -3,6 +3,9 @@ class BookingsController < ApplicationController
   before_action :find_property, only: [:create, :new]
 
   def show
+    @length = @booking.end_date - @booking.start_date
+    @total_price = @booking.property.price * @length
+    @property = @booking.property
   end
 
   def new
