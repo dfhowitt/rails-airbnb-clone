@@ -51,7 +51,7 @@ fyre = URI.open(fyrePic)
 targetproperty = Property.new(
   name: 'Fyre Festival',
   property_type: types.sample,
-  location: 'San Andres',
+  location: 'San Andreas',
   description: 'Live, Laugh, Love. Rent our fantasy Island, where all your dreams will come true and our celebrity chefs work round the clock to keep you fat and happy',
   price: 100000000,
   capacity: 800,
