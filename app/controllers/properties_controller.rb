@@ -22,15 +22,15 @@ class PropertiesController < ApplicationController
 
   def create
     @property = Property.new(property_params)
+    @property.user_id = current_user.id
     if @property.save
       redirect_to property_path(@property)
       flash.alert = "You just created #{@property.name}!  "
-
-
     else
       render :new
     end
   end
+
 
   def edit
   end
@@ -55,6 +55,6 @@ class PropertiesController < ApplicationController
   end
 
   def property_params
-    params.require(:property).permit(:owner_id, :type, :location, :name, :description, :price, :capacity, :availability, photos: [])
+    params.require(:property).permit(:property_type, :location, :name, :description, :price, :capacity, :availability, photos: [])
   end
 end
