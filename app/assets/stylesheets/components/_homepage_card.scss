@@ -6,10 +6,16 @@
   text-decoration: none;
   color: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  height: 150px;
 }
 
 .homepage-property-card-photo {
   padding-right: 10px;
+}
+
+.homepage-property-card-photo img {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 
 .homepage-property-card-info {
