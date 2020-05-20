@@ -7,11 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require "open-uri"
 
-# User.create(
-#   name: "Dan Howitt",
-#   email: "dfhowitt@gmail.com",
-#   password: 'blehbleh'
-#   )
 Booking.destroy_all
 Property.destroy_all
 types = ['Island', 'Penthouse', 'Villa', 'Luxury Tent', 'Mansion', 'Estate']
@@ -29,6 +24,8 @@ pictures_array = ["https://res.cloudinary.com/daxoj4nny/image/upload/v1589902097
                   "https://res.cloudinary.com/daxoj4nny/image/upload/v1589901279/luxury%20properties/download_sqvayr.jpg",
                   "https://res.cloudinary.com/daxoj4nny/image/upload/v1589901279/luxury%20properties/images_1_womt3b.jpg"
                  ]
+
+city_array = ['London', 'Madrid', 'Milan', 'Rome', 'Paris']
 pictures_array.each do |pic|
 
   file = URI.open(pic)
@@ -37,7 +34,7 @@ pictures_array.each do |pic|
   property = Property.new(
     name: Faker::Address.community,
     property_type: types.sample,
-    location: Faker::Address.city,
+    location: city_array.sample,
     description: Faker::Cannabis.health_benefit,
     price: price_range.sample,
     capacity: people_range.sample,
@@ -48,4 +45,20 @@ pictures_array.each do |pic|
   property.save
 
 end
+
+fyre = "https://res.cloudinary.com/cjw21889/image/upload/v1589969665/vesf7y2yk23jzdglzrru.jpg"
+  targetproperty = Property.new(
+    name: 'Fyre Festival',
+    property_type: types.sample,
+    location: 'San Andres',
+    description: Faker::Lorem.paragraph(sentence_count: 2, supplemental: false, random_sentences_to_add: 4)
+    price: 10000000,
+    capacity: 800,
+    availability: true,
+    user: User.first
+  )
+
+  targetproperty.photos.attach(io: fyre, filename: 'property_pic.jpg', content_type: 'image/jpg')
+  targetproperty.save
+
 
