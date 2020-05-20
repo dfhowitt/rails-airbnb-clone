@@ -1,8 +1,15 @@
 class BookingsController < ApplicationController
   before_action :find_booking, only: [:show, :destroy]
-  before_action :find_property, only: [:create, :new]
+  before_action :find_property, only: [:index, :create, :new]
+
+  def index
+    @booking = Booking.where(user: @property.user)
+  end
 
   def show
+    @length = @booking.end_date - @booking.start_date
+    @total_price = @booking.property.price * @length
+    @property = @booking.property
   end
 
   def new
