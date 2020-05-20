@@ -1,7 +1,12 @@
-
-<h2>Luxurious Properties</h2>
   <div class="d-flex">
     <div class="card-holder">
+      <h2>Results for "<%= @query %>":</h2>
+      <% unless @results %>
+        <div class="index-property-card">
+          <p class="no-results"><i class="fas fa-times text-danger"></i>  No results for "<%= @query %></p>
+        </div>
+        <h2>We suggest:</h2>
+      <% end %>
       <%@properties.each do |property|%>
         <div class="index-property-card">
           <% if property.photos.attached? %>
@@ -17,7 +22,7 @@
     </div>
     <!-- <img id="map" src='https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.3381,48.8693,10.45,0,0/600x1000?access_token=pk.eyJ1IjoiZ3VzLXQyNyIsImEiOiJjazlvYmlhYzgwYTh3M25vOGtpenVpOHE0In0.bn0KuBfLkQ7DXflf-mE5RA'> -->
     <div id="map"
-     style="width: 100%; height: 600px;"
+     style="width: 100%; height: 100vh; position: sticky: top: 0;"
      data-markers="<%= @markers.to_json %>"
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
   </div>

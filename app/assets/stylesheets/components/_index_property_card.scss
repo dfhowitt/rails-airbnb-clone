@@ -1,4 +1,3 @@
-
 .index-property-card {
   overflow: hidden;
   height: 150px;
@@ -32,3 +31,7 @@
   position: relative;
 }
 
+.index-property-card .no-results {
+  margin: auto;
+  font-size: 24px;
+}
