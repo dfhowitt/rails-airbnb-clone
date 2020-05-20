@@ -1,5 +1,5 @@
-<div class="container">
-  <h2>Luxurious Properties</h2>
+
+<h2>Luxurious Properties</h2>
   <div class="d-flex">
     <div class="card-holder">
       <%@properties.each do |property|%>
@@ -8,9 +8,9 @@
             <%= cl_image_tag property.photos.first.key, height: 300, width: 400, crop: :fill %>
           <% end %>
           <div class="index-card-product-infos">
-            <h1><%= property.name %></h1>
-            <h2><%= property.description.capitalize %></h2>
-            <h2 class="index-property-card-price">£<%= property.price %>/Week</h2>
+            <h4><%= link_to property.name, property_path(property)%></h4>
+            <h6><%= property.capacity%> guests · <%=property.property_type %> · £<%= property.price.to_i %>/night</h6>
+            <p> <%= property.description.capitalize %></p>
           </div>
         </div>
       <% end %>
@@ -21,7 +21,6 @@
      data-markers="<%= @markers.to_json %>"
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
   </div>
-</div>
 
 <footer>
 
