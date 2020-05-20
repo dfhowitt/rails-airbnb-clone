@@ -2,7 +2,14 @@ class PropertiesController < ApplicationController
   before_action :find, only: [:show, :edit, :update, :destroy]
 
   def index
-    @properties = Property.all
+    @properties = Property.geocoded
+
+    @markers = @properties.map do |property|
+      {
+        lat: property.latitude,
+        lng: property.longitude
+      }
+    end
   end
 
   def show
