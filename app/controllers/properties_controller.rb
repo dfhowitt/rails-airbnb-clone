@@ -24,6 +24,9 @@ class PropertiesController < ApplicationController
     @property = Property.new(property_params)
     if @property.save
       redirect_to property_path(@property)
+      flash.alert = "You just created #{@property.name}!  "
+
+
     else
       render :new
     end
