@@ -1,6 +1,10 @@
 class BookingsController < ApplicationController
   before_action :find_booking, only: [:show, :destroy]
-  before_action :find_property, only: [:create, :new]
+  before_action :find_property, only: [:index, :create, :new]
+
+  def index
+    @booking = Booking.where(user: @property.user)
+  end
 
   def show
   end
