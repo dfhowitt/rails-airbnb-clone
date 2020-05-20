@@ -5,8 +5,8 @@
     <h3><%= booking.user.name %> · <%=@property.capacity%> guests</h3>
     <p><%= booking.user.email %></p>
     <% length_of_stay = booking.end_date - booking.start_date %>
-    <% total_revenue = length_of_stay.to_i * @property.price %>
-    <h5>£<%= total_revenue.to_i %> - <%= length_of_stay.to_i %> nights </h5>
+    <% total_price = length_of_stay.to_i * @property.price %>
+    <h5> <%= number_to_currency(total_price, unit: "£", precision: 0) %> - <%= length_of_stay.to_i %> nights </h5>
     </div>
   <% end %>
 </div>

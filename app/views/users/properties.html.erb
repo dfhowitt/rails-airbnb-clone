@@ -1,15 +1,17 @@
 <div class="container">
   <% @properties.each do |property| %>
+  <%= link_to property_bookings_path(property) do %>
   <div class="user-property-card">
     <% if property.photos.attached? %>
       <div class="user-property-card-photo"><%= cl_image_tag property.photos[0].key, height: 150, width: 200, crop: :fill %>
       </div>
     <% end %>
     <div class="user-property-card-info">
-      <h3><%= link_to property.name, property_bookings_path(property)%></h3>
+      <h3><%= property.name%></h3>
       <h5><%= property.capacity%> guests · <%=property.property_type %> · £<%= property.price.to_i %>/night</h5>
       <p> <%= property.description.capitalize %></p>
     </div>
   </div>
+  <% end %>
   <% end %>
 </div>
