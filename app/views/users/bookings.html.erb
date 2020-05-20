@@ -1,11 +1,21 @@
 <div class="container">
   <% @bookings.each do |booking| %>
-    <div>
-      <h2><%= booking.property.name %></h2>
-      <h3><%= booking.start_date %></h3>
-      <h3><%= booking.end_date %></h3>
+    <%= link_to booking_path(booking) do %>
+      <div class="index-property-card mb-3">
+        <% if booking.property.photos.attached? %>
+            <%= cl_image_tag booking.property.photos.first.key, height: 300, width: 400, crop: :fill %>
+          <% end %>
+        <div class="index-card-product-infos">
+          <h2>Your Booking for <%= booking.property.name %></h2>
+          <% length = booking.end_date - booking.start_date %>
+          <% total_price = booking.property.price * length %>
+          <h3><%= number_to_currency(total_price, unit: "£") %></h3>
+          <p><%= number_to_currency(booking.property.price, unit: "£") %> / night</p>
+          <h2>Check-in: <%= booking.start_date %></h2>
+          <h2>Check-out: <%= booking.end_date %></h2>
+        </div>
+      </div>
+    <% end %>
 
-    </div>
-    <hr>
   <% end %>
 </div>

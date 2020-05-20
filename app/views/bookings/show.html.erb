@@ -1,5 +1,35 @@
-<h1><%= @booking.property.name %></h1>
-<h3><%= @booking.start_date %></h3>
-<h3><%= @booking.end_date %></h3>
 
+<div class="container">
+  <h1>Your Booking for <%= @booking.property.name %></h1>
+
+  <% if @property.photos.attached? %>
+    <%= render 'shared/img_carousel' %>
+  <% end %>
+
+  <div class="booking-info my-5 d-flex justify-content-between">
+    <div class="dates">
+      <h2>Check-in: <%= @booking.start_date %></h2>
+      <h2>Check-out: <%= @booking.end_date %></h2>
+    </div>
+    <div class="price-info">
+      <h3><%= number_to_currency(@total_price, unit: "£") %></h3>
+      <p><%= number_to_currency(@booking.property.price, unit: "£") %> / night</p>
+    </div>
+  </div>
+
+    <div class="booking-property-info">
+      <div class="property-info border-bottom">
+        <h5>Host: <%= @property.user.name %> </h5>
+          <p> <strong> <%= @property.property_type %> </strong>-- Capacity: <%= @property.capacity %></p>
+      </div>
+      <div class="property-desctription mt-2">
+        <%= @property.description %>
+      </div>
+    </div>
+
+
+  </div>
+
+
+</div>
 
