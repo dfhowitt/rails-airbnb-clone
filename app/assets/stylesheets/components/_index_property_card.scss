@@ -1,12 +1,13 @@
+
 .index-property-card {
   overflow: hidden;
   height: 150px;
-  background: white;
+  background: #292733;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 5px;
   display: flex;
-  align-items: center;
   margin: 0px 24px 24px 24px;
-  color: black;
+  color: white;
   width: 600px;
   &:last-of-type {
     margin-bottom: 0px;
@@ -15,32 +16,19 @@
 
 .index-property-card img {
   height: 100%;
-  width: 120px;
+  width: 200px;
   object-fit: cover;
 }
 
-.index-property-card h2 {
-  font-size: 16px;
-  margin: 0;
-}
-
 .index-property-card p {
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.4;
   opacity: .7;
   margin-bottom: 0;
-  margin-top: 8px;
 }
 
 .index-property-card .index-card-product-infos {
-  padding: 16px;
+  padding: 10px;
   position: relative;
 }
 
-.index-property-card-price {
-  padding: 16px;
-  display: flex;
-  justify-content: space-between;
-  align-text: right;
-  position: relative;
-}

@@ -1,10 +1,11 @@
 .homepage-property-card {
   display: flex;
   border-radius: 5px;
-  margin: 10px;
-  background: rgb(20,20,30);
-  border: 2px solid white;
+  margin: 0px 24px 24px 24px;
+  background: #292733;
   text-decoration: none;
+  color: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
 .homepage-property-card-photo {
