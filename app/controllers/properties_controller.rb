@@ -2,7 +2,14 @@ class PropertiesController < ApplicationController
   before_action :find, only: [:show, :edit, :update, :destroy]
 
   def index
-    @properties = Property.geocoded
+    query = params[:query]
+    # if query_geocoder_results
+    query_geocoder_results = Geocoder.search(query)
+    query_coords = query_geocoder_results.first.coordinates
+
+    # raise
+
+    @properties = Property.geocoded.near(query, 50)
 
     @markers = @properties.map do |property|
       {
