@@ -1,19 +1,20 @@
 <div class="container">
   <% @bookings.each do |booking| %>
     <%= link_to booking_path(booking) do %>
-      <div class="index-property-card mb-3">
+      <div class="homepage-property-card mb-3">
         <% if booking.property.photos.attached? %>
-            <%= cl_image_tag booking.property.photos.first.key, height: 300, width: 400, crop: :fill %>
-          <% end %>
-        <div class="index-card-product-infos">
-          <h2>Your Booking for <%= booking.property.name %></h2>
+        <div class="homepage-property-card-photo">
+            <%= cl_image_tag booking.property.photos.first.key, height: 150, width: 200, crop: :fill %>
+        </div>
+        <% end %>
+        <div class="homepage-property-card-info">
           <% length = booking.end_date - booking.start_date %>
           <% total_price = booking.property.price * length %>
-          <h3><%= number_to_currency(total_price, unit: "£") %></h3>
-          <p><%= number_to_currency(booking.property.price, unit: "£") %> / night</p>
-          <h2>Check-in: <%= booking.start_date %></h2>
-          <h2>Check-out: <%= booking.end_date %></h2>
+          <h3>Your Booking for <%= booking.property.name %></h3>
+          <h5>Check-in: <%= booking.start_date %> </h5>
+          <h5><%= booking.property.capacity%> guests · <%=booking.property.property_type %> · <%= number_to_currency(total_price, unit: "£", precision: 0) %> total <%= number_to_currency(booking.property.price, unit: "£", precision: 0) %>/night</h5>
           <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+
             Cancel Booking
           </button>
         </div>
