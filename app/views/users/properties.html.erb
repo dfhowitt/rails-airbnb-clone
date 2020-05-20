@@ -10,16 +10,16 @@
       <h3><%= property.name%></h3>
       <h5><%= property.capacity%> guests · <%=property.property_type %> · £<%= property.price.to_i %>/night</h5>
       <p> <%= property.description.capitalize %></p>
-      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+      <!-- <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
         Delete Property
-      </button>
+      </button> -->
     </div>
   </div>
   <% end %>
   <% end %>
 </div>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -33,10 +33,11 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Delete Property</button>
+          <button type="button" class="btn btn-primary"><%#= link_to "Delete Property", properties_path(property), method: :delete %></button>
         </div>
       </div>
     </div>
   </div>
 
 </div>
+ -->

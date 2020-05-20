@@ -13,10 +13,10 @@
           <h3>Your Booking for <%= booking.property.name %></h3>
           <h5>Check-in: <%= booking.start_date %> </h5>
           <h5><%= booking.property.capacity%> guests · <%=booking.property.property_type %> · <%= number_to_currency(total_price, unit: "£", precision: 0) %> total <%= number_to_currency(booking.property.price, unit: "£", precision: 0) %>/night</h5>
-          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+          <!-- <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
 
             Cancel Booking
-          </button>
+          </button> -->
         </div>
       </div>
     <% end %>
@@ -25,7 +25,7 @@
 
 
   <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -46,3 +46,4 @@
   </div>
 
 </div>
+ -->
