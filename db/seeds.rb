@@ -46,13 +46,14 @@ pictures_array.each do |pic|
 
 end
 
-fyre = "https://res.cloudinary.com/cjw21889/image/upload/v1589969665/vesf7y2yk23jzdglzrru.jpg"
+fyrePic = "https://res.cloudinary.com/cjw21889/image/upload/v1589969665/vesf7y2yk23jzdglzrru.jpg"
+fyre = URI.open(fyrePic)
   targetproperty = Property.new(
     name: 'Fyre Festival',
     property_type: types.sample,
     location: 'San Andres',
-    description: Faker::Lorem.paragraph(sentence_count: 2, supplemental: false, random_sentences_to_add: 4)
-    price: 10000000,
+    description: 'Live, Laugh, Love. Rent our fantasy Island, where all your dreams will come true and our celebrity chefs work round the clock to keep you fat and happy',
+    price: 100000000,
     capacity: 800,
     availability: true,
     user: User.first
