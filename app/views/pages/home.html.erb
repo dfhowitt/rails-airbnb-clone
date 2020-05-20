@@ -1,5 +1,5 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
-url('<%= cl_image_path "background_njhgsm", height: 600, crop: :fill %>')">
+url('<%= cl_image_path "background_njhgsm", height: 600, crop: :fill %>'); background-size: cover;">
   <div class="title">
     <h1>AirBnB</h1>
     <h4>Find your luxurious getaway</h4>
@@ -17,7 +17,7 @@ url('<%= cl_image_path "background_njhgsm", height: 600, crop: :fill %>')">
   <%new_properties.each do |property|%>
   <div class="homepage-property-card">
     <% if property.photos.attached? %>
-      <div class="homepage-property-card-photo"><%= cl_image_tag property.photos[0].key, height: 200, width: 200, crop: :fill %>
+      <div class="homepage-property-card-photo"><%= cl_image_tag property.photos[0].key, height: 150, width: 200, crop: :fill %>
       </div>
     <% end %>
     <div class="homepage-property-card-info">
