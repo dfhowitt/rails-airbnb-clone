@@ -14,7 +14,7 @@
           <% end %>
           <div class="index-card-product-infos">
             <h4><%= link_to property.name, property_path(property)%></h4>
-            <h6><%= property.capacity%> guests · <%=property.property_type %> · £<%= property.price.to_i %>/night</h6>
+            <h6><%= property.capacity%> guests · <%=property.property_type %> · <%= number_to_currency(property.price, unit: "£", precision: 0) %>/night</h6>
             <p> <%= property.description.capitalize %></p>
           </div>
         </div>
