@@ -7,13 +7,13 @@ class PropertiesController < ApplicationController
     @markers = @properties.map do |property|
       {
         lat: property.latitude,
-        lng: property.longitude
+        lng: property.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { property: property })
       }
     end
   end
 
   def show
-
   end
 
   def new
@@ -24,6 +24,9 @@ class PropertiesController < ApplicationController
     @property = Property.new(property_params)
     if @property.save
       redirect_to property_path(@property)
+      flash.alert = "You just created #{@property.name}!  "
+
+
     else
       render :new
     end

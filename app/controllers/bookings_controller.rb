@@ -22,6 +22,8 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     if @booking.save
       redirect_to booking_path(@booking)
+      flash.alert = "You are staying at #{@property.name}!  "
+
     else
       render :new
     end
