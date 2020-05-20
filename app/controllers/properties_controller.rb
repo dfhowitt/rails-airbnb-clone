@@ -7,13 +7,13 @@ class PropertiesController < ApplicationController
     @markers = @properties.map do |property|
       {
         lat: property.latitude,
-        lng: property.longitude
+        lng: property.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { property: property })
       }
     end
   end
 
   def show
-
   end
 
   def new
