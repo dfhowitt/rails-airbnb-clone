@@ -5,7 +5,12 @@ Rails.application.routes.draw do
   resources :properties do
     resources :bookings, only: [:index, :new, :create]
   end
-  resources :bookings, only: [:show, :destroy]
+
+  resources :bookings, only: [:show, :destroy] do
+    resources :reviews, only: [:new, :create, :edit, :update]
+  end
+
+  resources :reviews, only: [:destroy]
 
   resources :users, only: [:show] do
     get "bookings", to: "users#bookings"
