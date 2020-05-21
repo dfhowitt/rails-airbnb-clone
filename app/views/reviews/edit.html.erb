@@ -1,0 +1,5 @@
+<%= simple_form_for [property, review] do |f| %>
+    <%= f.input :content, as: :text %>
+    <%= f.input :rating, as: :integer %>
+    <%= f.submit "Submit", {class: "btn btn-primary w-100 mb-2"} %>
+<% end %>
