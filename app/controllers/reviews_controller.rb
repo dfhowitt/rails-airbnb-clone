@@ -11,7 +11,7 @@ class ReviewsController < ApplicationController
     @review.user_id = current_user.id
     @review.booking = @booking
     if @review.save
-      redirect_to review_path(@review)
+      redirect_to booking_path(@booking)
     else
       render :new
     end
