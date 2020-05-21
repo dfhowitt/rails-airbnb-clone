@@ -14,10 +14,20 @@
 @import "icons";
 
 body {
-  background-color: rgb(20,20,30);
+  background-color: $gray;
+  font-family: 'Heebo', sans-serif;
+  font-weight: 300;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Heebo', sans-serif;
+  font-weight: 700;
 }
 
 h2 {
   padding: 22px 0px 10px 22px;
 }
 
+a:hover {
+  text-decoration: none;
+}
