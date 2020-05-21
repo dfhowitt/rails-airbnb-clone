@@ -8,16 +8,50 @@
   <hr>
 
   <%= simple_form_for @property do |f| %>
-    <%= f.input :name,          input_html: { placeholder: "Enter a name for your property" } %>
-    <%= f.input :property_type,
+    <div class="row">
+      <div class="col-6">
+        <%= f.input :name,  input_html: { placeholder: "Enter a name for your property" } %>
+      </div>
+      <div class="col-6">
+        <%= f.input :location, input_html: { placeholder: "Enter the property location, e.g. \"33 Charter Avenue\"" } %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <%= f.input :property_type,
                 collection: ['Island', 'Penthouse', 'Villa', 'Luxury Tent', 'Mansion', 'Estate'],
                 prompt: "-- Select the correct property type --" %>
-    <%= f.input :location,      input_html: { placeholder: "Enter the property location, e.g. \"33 Charter Avenue\"" } %>
+      </div>
+      <div class="col-4">
+        <%= f.input :price, input_html: { placeholder: "Enter the day rate for your property" } %>
+      </div>
+      <div class="col-4">
+        <%= f.input :capacity, input_html: { placeholder: "How many people can the property hold" } %>
+      </div>
+    </div>
     <%= f.input :description,   input_html: { placeholder: "Describe the property" } %>
-    <%= f.input :price,         input_html: { placeholder: "Enter the day rate for your property" } %>
-    <%= f.input :capacity,      input_html: { placeholder: "How many people can the property hold" } %>
     <%= f.input :availability, label: 'Would you like to make this property immediately available?' %>
-    <%= f.association :services, as: :check_boxes, multiple: true %>
+
+    <div class="form-group">
+      <!-- <label class="control-label check_boxes optional">Services</label> -->
+      <input type="hidden" name="property[service_ids][]" value="">
+      <div class="service-choices">
+        <% Service.all.each do |service| %>
+        <div class="service-choice mb-2">
+          <input type="checkbox" class="hidden" value="<%= service.id %>" name="property[service_ids][]" id="property_service_ids_<%= service.id %>">
+          <label for="property_service_ids_<%= service.id %>" class="">
+            <%= service.name %>
+            <i class="<%= service.icon %>"></i>
+          </label>
+        </div>
+        <% end %>
+       </div>
+    </div>
+
+
+
+    <%#= f.association :services, as: :check_boxes, multiple: true %>
+
     <%= f.input :photos, as: :file, input_html: { multiple: true } %>
 
     <% if @property.id.nil? %>

@@ -12,14 +12,17 @@
 @import "property_booking_card";
 @import "modal";
 @import "icons";
+@import "footer";
 
 body {
   background-color: $gray;
   font-family: 'Heebo', sans-serif;
   font-weight: 300;
+  z-index: -10;
 }
 
 h1, h2, h3, h4, h5, h6 {
+  color: $lighter-gray;
   font-family: 'Heebo', sans-serif;
   font-weight: 700;
 }

@@ -6,3 +6,29 @@ hr {
   border-color: #eaf4f5;
   box-shadow: 0 0 0 0.2rem rgba(148, 197, 204, 0.25);
 }
+
+// Checkboxes design
+.service-choices {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+
+.service-choice {
+  background: #b7b7b7;
+  color: white;
+  padding: 20px;
+  border-radius: 5px;
+  opacity: .4;
+  flex: 0 0 30%;
+  text-align: center;
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+  &.active {
+  color: white;
+  opacity: 1;
+  }
+}

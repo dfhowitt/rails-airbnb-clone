@@ -3,6 +3,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  height: 500px;
+  height: 400px;
   width: 100vw;
+  position: relative;
+  top: -56px;
+  padding-top: 56px;
+}
+.banner .home-search {
+  z-index: 1;
 }

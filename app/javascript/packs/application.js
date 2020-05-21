@@ -34,3 +34,17 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   initMapbox();
 });
+
+
+$(document).ready(function(){
+  const boxes = document.querySelectorAll(".service-choice")
+
+  boxes.forEach(box => {
+    box.addEventListener('click', (event) => {
+      const checkbox = event.currentTarget.querySelector('input')
+      checkbox.checked = !checkbox.checked
+      event.currentTarget.classList.toggle("active")
+    })
+  } )
+
+});
