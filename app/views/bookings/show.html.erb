@@ -1,6 +1,12 @@
 
 <div class="container">
   <h1>Your Booking for <%= @booking.property.name %></h1>
+    <div class="icons">
+    <h3>Add a review</h3>
+        <%= link_to new_booking_review_path(@booking) do %>
+        <i class="fas fa-plus"></i>
+        <% end %>
+  </div>
 
   <% if @property.photos.attached? %>
     <%= render 'shared/img_carousel' %>

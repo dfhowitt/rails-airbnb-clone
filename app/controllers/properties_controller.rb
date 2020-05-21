@@ -8,6 +8,9 @@ class PropertiesController < ApplicationController
     query_coords = query_geocoder_results.first&.coordinates
 
     @properties = Property.geocoded.near(@query, 50)
+    @properties_with_stars = @properties.map do |property|
+      {property: property, average_rating: stars(property)[:average_rating], blank_stars: stars(property)[:blank_stars]}
+    end
     @results = true
 
     if @properties.empty? || !query_coords
@@ -25,6 +28,9 @@ class PropertiesController < ApplicationController
   end
 
   def show
+
+    @average_rating = stars(@property)[:average_rating]
+    @blank_stars = stars(@property)[:blank_stars]
   end
 
   def new
@@ -70,6 +76,23 @@ class PropertiesController < ApplicationController
   end
 
   private
+
+  def stars(property)
+    ratings = []
+    sum = 0
+    property.reviews.each do |review|
+      ratings << review.rating
+    end
+    ratings.each do |rating|
+      sum += rating.to_i
+    end
+    unless ratings.empty?
+      average_rating = sum/ratings.length
+      blank_stars = 5 - average_rating.to_i
+      return {average_rating: average_rating, blank_stars: blank_stars}
+    end
+    return {average_rating: nil, blank_stars: nil}
+  end
 
   def create_post_category(property, services)
     services.each do |service|

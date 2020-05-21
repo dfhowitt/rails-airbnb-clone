@@ -21,7 +21,7 @@ url('<%= image_path "banner.jpg", height: 400, crop: :fill %>'); background-size
           <% if property.photos.attached? %>
             <div class="homepage-property-card-info h-100">
               <div class="bottom text-right px-2 py-1">
-                <h5 class="mb-1"><%= property.name %></h3>
+                <h5 class="mb-1"><%= property.name %></h5>
                 <p class="mb-0"><%= property.capacity%> guests · <%=property.property_type %> · <%= number_to_currency(property.price, unit: "£", precision: 0) %>/night</p>
               </div>
             </div>
