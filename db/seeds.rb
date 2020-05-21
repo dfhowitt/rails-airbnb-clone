@@ -9,6 +9,8 @@ require "open-uri"
 
 Booking.destroy_all
 Property.destroy_all
+Service.destroy_all
+
 types = ['Island', 'Penthouse', 'Villa', 'Luxury Tent', 'Mansion', 'Estate']
 price_range = (1000..10000).to_a
 people_range = (1..30).to_a
