@@ -1,23 +1,33 @@
+.home-card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 32px 32px;
+}
+
 .homepage-property-card {
-  display: flex;
+  height: 200px;
   border-radius: 5px;
-  margin: 0px 24px 24px 24px;
-  background: #292733;
-  text-decoration: none;
-  color: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  height: 150px;
-}
-
-.homepage-property-card-photo {
-  padding-right: 10px;
-}
-
-.homepage-property-card-photo img {
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  background-size: cover;
+  background-position: center;
 }
 
 .homepage-property-card-info {
-  padding: 10px;
+  color: $lighter-gray;
+  border-radius: 5px;
+  h5 {
+    text-shadow: 0 0 10px rgba(0,0,0,0.3);
+  }
+}
+
+// .homepage-property-card-info h5 {
+//   text-shadow: 0 0 10px rgba(0,0,0,0.3);
+// }
+
+// .homepage-property-card-info p {
+//   display: none;
+// }
+
+.homepage-property-card-info:hover {
+  text-decoration: none;
+  background-color: rgba(0,0,0,0.3);
 }
