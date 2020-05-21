@@ -1,0 +1,13 @@
+.property-list {
+  list-style: none;
+  padding: 0;
+}
+
+.property-list li {
+  display: inline;
+  background-color: $yellow;
+  border-radius: 4px;
+  padding: 0 4px;
+  color: $gray;
+  font-weight: 700;
+}
