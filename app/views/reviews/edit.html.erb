@@ -1,5 +1,12 @@
-<%= simple_form_for [property, review] do |f| %>
-    <%= f.input :content, as: :text %>
-    <%= f.input :rating, as: :integer %>
+<div class="devise-form bg-info col-md-8 col-sm-10 mx-auto mt-3 py-3 rounded">
+  <h2 class="text-center">Edit your review for <span class="bg-success px-2 rounded text-info"><%= @review.booking.property.name %></span></h2>
+
+  <hr>
+
+<div class="container">
+  <%= simple_form_for [@booking, @review], method: :post do |f| %>
+    <%= f.input :content, label: false, as: :text %>
+    <%= f.input :rating, as: :select, collection: (1..5) %>
     <%= f.submit "Submit", {class: "btn btn-primary w-100 mb-2"} %>
-<% end %>
+  <% end %>
+</div>
