@@ -23,9 +23,14 @@
   &:hover {
     text-decoration: none;
     background-color: rgba(0,0,0,0.2);
+    .bottom {
+      background-color: none;
+    }
   }
   .bottom {
     margin-top: auto;
+    background-color: rgba(0,0,0,0.2);
+    box-shadow:  0 -10px 10px rgba(0,0,0,0.2);
     p {
       line-height: 1em;
       font-size: 14px;
