@@ -17,7 +17,9 @@
     <%= f.input :price,         input_html: { placeholder: "Enter the day rate for your property" } %>
     <%= f.input :capacity,      input_html: { placeholder: "How many people can the property hold" } %>
     <%= f.input :availability, label: 'Would you like to make this property immediately available?' %>
+    <%= f.association :services, as: :check_boxes, multiple: true %>
     <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+
     <% if @property.id.nil? %>
       <%= f.submit 'Register your luxurious property!', {class: "btn btn-primary w-100 mb-2"} %>
     <% else %>
