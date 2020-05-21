@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_20_100803) do
+ActiveRecord::Schema.define(version: 2020_05_21_105353) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,22 @@ ActiveRecord::Schema.define(version: 2020_05_20_100803) do
     t.index ["user_id"], name: "index_properties_on_user_id"
   end
 
+  create_table "property_services", force: :cascade do |t|
+    t.bigint "property_id", null: false
+    t.bigint "service_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["property_id"], name: "index_property_services_on_property_id"
+    t.index ["service_id"], name: "index_property_services_on_service_id"
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.string "name"
+    t.string "icon"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -80,4 +96,6 @@ ActiveRecord::Schema.define(version: 2020_05_20_100803) do
   add_foreign_key "bookings", "properties"
   add_foreign_key "bookings", "users"
   add_foreign_key "properties", "users"
+  add_foreign_key "property_services", "properties"
+  add_foreign_key "property_services", "services"
 end

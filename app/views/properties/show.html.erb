@@ -64,6 +64,14 @@
     </div>
   </div>
 
+  <h1>
+    <%  @property.services.each do |service| %>
+    <%= service.name  %> <i class="<%= service.icon %>"></i>
+
+    <% end  %>
+
+  </h1>
+
 
 
 

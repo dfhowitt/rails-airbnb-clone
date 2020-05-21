@@ -62,4 +62,21 @@ targetproperty = Property.new(
 targetproperty.photos.attach(io: fyre, filename: 'property_pic.jpg', content_type: 'image/jpg')
 targetproperty.save
 
+services = %w(Butler Security Chef Lifeguard Maid Valet)
+icons = ["fas fa-concierge-bell",
+         "fas fa-shield-alt",
+         "fas fa-utensils",
+         "fas fa-swimmer",
+         "fas fa-broom",
+         "fas fa-car"
+        ]
+i = 0
+services.each do |service|
+  Service.create(name: service, icon: icons[i])
+  i += 1
+end
+
+
+
+
 

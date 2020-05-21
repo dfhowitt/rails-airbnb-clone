@@ -34,7 +34,12 @@ class PropertiesController < ApplicationController
   def create
     @property = Property.new(property_params)
     @property.user_id = current_user.id
+
+
     if @property.save
+      if params[:property][:service_ids].reject(&:blank?).any?
+        create_post_category(@property.id, params[:property][:service_ids].reject(&:blank?))
+      end
       redirect_to property_path(@property)
       flash.alert = "You just created #{@property.name}!  "
     else
@@ -47,7 +52,12 @@ class PropertiesController < ApplicationController
   end
 
   def update
+    @property.services.destroy_all
+
     if @property.update(property_params)
+      if params[:property][:service_ids].reject(&:blank?).any?
+        create_post_category(@property.id, params[:property][:service_ids].reject(&:blank?))
+      end
       redirect_to property_path(@property)
     else
       render :edit
@@ -61,11 +71,17 @@ class PropertiesController < ApplicationController
 
   private
 
+  def create_post_category(property, services)
+    services.each do |service|
+      PropertyService.create(property_id: property, service_id: service.to_i)
+    end
+  end
+
   def find
     @property = Property.find(params[:id])
   end
 
   def property_params
-    params.require(:property).permit(:property_type, :location, :name, :description, :price, :capacity, :availability, photos: [])
+    params.require(:property).permit(:property_type, :location, :name, :description, :price, :capacity, :availability, :service_ids, photos: [])
   end
 end
