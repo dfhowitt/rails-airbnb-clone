@@ -16,14 +16,24 @@
       <h3><%= property.name%></h3>
       <h5><%= property.capacity%> guests · <%=property.property_type %> · £<%= property.price.to_i %>/night</h5>
       <p> <%= property.description.capitalize %></p>
-      <!-- <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
-        Delete Property
-      </button> -->
+      <div class="icons">
+        <%= link_to edit_property_path(property) do %>
+        <i class="fas fa-edit"></i>
+        <% end %>
+      </div>
     </div>
   </div>
   <% end %>
   <% end %>
 </div>
+
+
+
+
+
+      <!-- <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+        Delete Property
+      </button> -->
 
 <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
