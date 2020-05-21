@@ -1,0 +1,7 @@
+<%= simple_form_for [property, review] do |f| %>
+  <%= f.input :content, as: :text %>
+  <%= f.collection_radio_buttons :rating, [[5], [4], [3], [2], [1]], :first, :last, item_wrapper_tag: false, boolean_style: :inline do |b| %>
+    <%= b.radio_button + b.label {''} %>
+  <% end %>
+  <%= f.submit "Submit", {class: "btn btn-primary w-100 mb-2"} %>
+<% end %>
