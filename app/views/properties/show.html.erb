@@ -1,7 +1,18 @@
 <div class="container">
   <div class="property-header">
     <div class="property-title">
-      <h1><%= @property.name %></h1>
+      <h1><%= @property.name %>
+        <% unless @average_rating == nil %>
+          <% @average_rating.times do %>
+            <i class="fas fa-star"></i>
+      <% end %>
+
+        <% @blank_stars.times do %>
+          <i class="far fa-star"></i>
+        <% end %>
+      <% end %>
+    </h1>
+
     </div>
     <div class="property-links d-flex justify-content-between">
       <p><%= @property.location %></p>
@@ -16,6 +27,14 @@
     <%= render 'shared/img_carousel' %>
   <% end %>
 
+  <div class="reviews">
+    <% @property.reviews.each do |review|%>
+        <div class="review">
+          <%= review.content %> - <%= review.user.name%> <%= review.rating %>
+        </div>
+    <% end %>
+  </div>
+
   <div class="property-body mt-5">
     <div class="row">
       <div class="property-details col-8">
@@ -24,7 +43,7 @@
             <p> <strong> <%= @property.property_type %> </strong>-- Capacity: <%= @property.capacity %></p>
         </div>
         <div class="property-desctription">
-          <%= @property.description %>
+          <%= @property.description.capitalize %>
         </div>
       </div>
 
@@ -37,12 +56,6 @@
             <%= render 'bookings/form', booking: Booking.new, property: @property %>
           </div>
         </div>
-
-
-
-
-
-
 
 
 <!-- TODO calculate price based on form input -->

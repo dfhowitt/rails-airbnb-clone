@@ -7,15 +7,24 @@
         </div>
         <h2>We suggest:</h2>
       <% end %>
-      <%@properties.each do |property|%>
+      <%@properties_with_stars.each do |property|%>
         <div class="index-property-card">
-          <% if property.photos.attached? %>
-            <%= cl_image_tag property.photos.first.key, height: 300, width: 400, crop: :fill %>
+          <% if property[:property].photos.attached? %>
+            <%= cl_image_tag property[:property].photos.first.key, height: 300, width: 400, crop: :fill %>
           <% end %>
           <div class="index-card-product-infos">
-            <h4><%= link_to property.name, property_path(property)%></h4>
-            <h6><%= property.capacity%> guests · <%=property.property_type %> · <%= number_to_currency(property.price, unit: "£", precision: 0) %>/night</h6>
-            <p> <%= property.description.capitalize %></p>
+            <h4><%= link_to property[:property].name, property_path(property[:property])%></h4>
+            <h6><%= property[:property].capacity%> guests · <%=property[:property].property_type %> · <%= number_to_currency(property[:property].price, unit: "£", precision: 0) %>/night</h6>
+            <p> <%= property[:property].description.capitalize %></p>
+            <% unless property[:average_rating].nil? %>
+            <p> <% property[:average_rating].times do %>
+              <i class="fas fa-star"></i>
+            <% end %>
+            <% property[:blank_stars].times do %>
+              <i class="far fa-star"></i>
+            <% end %>
+            <% end %>
+          </p>
           </div>
         </div>
       <% end %>
