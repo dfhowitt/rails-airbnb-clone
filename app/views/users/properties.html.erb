@@ -1,4 +1,10 @@
 <div class="container">
+  <div class="icons">
+    <h3>Add a property</h3>
+        <%= link_to new_property_path(@property) do %>
+        <i class="fas fa-plus"></i>
+        <% end %>
+  </div>
   <% @properties.each do |property| %>
   <%= link_to property_bookings_path(property) do %>
   <div class="user-property-card">
