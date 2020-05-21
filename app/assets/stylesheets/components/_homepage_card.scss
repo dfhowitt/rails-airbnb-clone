@@ -9,25 +9,26 @@
   border-radius: 5px;
   background-size: cover;
   background-position: center;
+  box-shadow: 0 0 3px rgba(0,0,0,0.3)
 }
 
 .homepage-property-card-info {
   color: $lighter-gray;
   border-radius: 5px;
+  display: flex;
+  flex-direction: column;
   h5 {
     text-shadow: 0 0 10px rgba(0,0,0,0.3);
   }
-}
-
-// .homepage-property-card-info h5 {
-//   text-shadow: 0 0 10px rgba(0,0,0,0.3);
-// }
-
-// .homepage-property-card-info p {
-//   display: none;
-// }
-
-.homepage-property-card-info:hover {
-  text-decoration: none;
-  background-color: rgba(0,0,0,0.3);
+  &:hover {
+    text-decoration: none;
+    background-color: rgba(0,0,0,0.2);
+  }
+  .bottom {
+    margin-top: auto;
+    p {
+      line-height: 1em;
+      font-size: 14px;
+    }
+  }
 }

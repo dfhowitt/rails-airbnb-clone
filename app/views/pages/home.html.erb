@@ -17,13 +17,12 @@ url('<%= image_path "banner.jpg", height: 400, crop: :fill %>'); background-size
   <div class="home-card-grid mx-4">
     <%new_properties.each do |property|%>
       <%= link_to property_path(property) do %>
-        <div class="homepage-property-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path property.photos[0].key, height: 300, width: 400, crop: :fill %>')">
+        <div class="homepage-property-card" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.2)), url('<%= cl_image_path property.photos[0].key, height: 300, width: 400, crop: :fill %>')">
           <% if property.photos.attached? %>
-            <div class="homepage-property-card-info h-100 p-2">
-              <p> <%= property.description.capitalize %></p>
-              <div class="bottom">
-                <h5><%= property.name %></h3>
-                <p><%= property.capacity%> guests · <%=property.property_type %> · <%= number_to_currency(property.price, unit: "£", precision: 0) %>/night</p>
+            <div class="homepage-property-card-info h-100 px-2 py-1">
+              <div class="bottom text-right">
+                <h5 class="mb-1"><%= property.name %></h3>
+                <p class="mb-0"><%= property.capacity%> guests · <%=property.property_type %> · <%= number_to_currency(property.price, unit: "£", precision: 0) %>/night</p>
               </div>
             </div>
           <% else %>
