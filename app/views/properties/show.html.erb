@@ -25,7 +25,12 @@
             <li><%= @property.property_type %></li>
             <li>Capacity: <%= @property.capacity %></li>
           </ul>
-            <!-- <p class="text-primary"> <strong>  </strong>-- </p> -->
+          <ul class="service-list">
+            <% @property.services.each do |service| %>
+              <li><%= service.name %></li>
+              <i class="<%= service.icon %>"></i>
+            <% end %>
+          </ul>
         </div>
         <div class="property-desctription">
           <%= @property.description %>
@@ -58,21 +63,7 @@
         </div>
       </div>
        -->
+      </div>
     </div>
   </div>
-
-  <h1>
-    <%  @property.services.each do |service| %>
-    <%= service.name  %> <i class="<%= service.icon %>"></i>
-
-    <% end  %>
-
-  </h1>
-
-
-
-
-
-
-
 </div>
