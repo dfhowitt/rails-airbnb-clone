@@ -1,5 +1,5 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
-url('<%= image_path "banner.jpg", height: 400, crop: :fill %>'); background-size: cover; background-position: center;">
+url('<%= image_path "banner.jpg", height: 400, crop: :fill %>'); background-size: cover; background-position: 50% 60%;">
   <div class="title">
     <h1>AirBnB</h1>
     <h4>Find your luxurious getaway</h4>
@@ -19,8 +19,8 @@ url('<%= image_path "banner.jpg", height: 400, crop: :fill %>'); background-size
       <%= link_to property_path(property) do %>
         <div class="homepage-property-card" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.2)), url('<%= cl_image_path property.photos[0].key, height: 300, width: 400, crop: :fill %>')">
           <% if property.photos.attached? %>
-            <div class="homepage-property-card-info h-100 px-2 py-1">
-              <div class="bottom text-right">
+            <div class="homepage-property-card-info h-100">
+              <div class="bottom text-right px-2 py-1">
                 <h5 class="mb-1"><%= property.name %></h3>
                 <p class="mb-0"><%= property.capacity%> guests · <%=property.property_type %> · <%= number_to_currency(property.price, unit: "£", precision: 0) %>/night</p>
               </div>
