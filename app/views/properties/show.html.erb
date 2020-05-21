@@ -41,7 +41,7 @@
         <div class="booking-tool-header">
           <h2 class="p-0 my-3">Make a booking:</h2>
           <div class="price-header">
-             <p class="text-success"> <%= number_to_currency(@property.price, unit: "£") %> / night </p>
+             <p class="text-success"> <%= number_to_currency(@property.price, unit: "£", precision: 0) %> / night </p>
           </div>
         </div>
         <div class="dates w-100 pb-2">
