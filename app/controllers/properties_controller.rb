@@ -48,7 +48,7 @@ class PropertiesController < ApplicationController
       if params[:property][:service_ids].reject(&:blank?).any?
         create_post_category(@property.id, params[:property][:service_ids].reject(&:blank?))
       end
-      redirect_to property_path(@property)
+      redirect_to user_dashboard_path(current_user)
       flash.alert = "You just created #{@property.name}!  "
     else
       render :new
@@ -66,7 +66,7 @@ class PropertiesController < ApplicationController
       if params[:property][:service_ids].reject(&:blank?).any?
         create_post_category(@property.id, params[:property][:service_ids].reject(&:blank?))
       end
-      redirect_to property_path(@property)
+      redirect_to user_dashboard_path(current_user)
     else
       render :edit
     end
@@ -74,7 +74,7 @@ class PropertiesController < ApplicationController
 
   def destroy
     @property.destroy
-    redirect_to user_properties_path(current_user)
+    redirect_to user_dashboard_path(current_user)
   end
 
   private

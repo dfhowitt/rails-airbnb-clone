@@ -21,7 +21,7 @@ class BookingsController < ApplicationController
     @booking.property = @property
     @booking.user = current_user
     if @booking.save
-      redirect_to booking_path(@booking)
+      redirect_to user_dashboard_path(current_user)
       flash.alert = "You are staying at #{@property.name}!  "
 
     else
@@ -31,7 +31,7 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking.destroy
-    redirect_to property_path(@booking.property)
+    redirect_to user_dashboard_path(current_user)
   end
 
   private
