@@ -1,0 +1,53 @@
+.user-review-card {
+  display: flex;
+  border-radius: 5px;
+  margin: 0px 24px 24px 24px;
+  background: #292733;
+  text-decoration: none;
+  color: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  height: 150px;
+}
+
+.user-review-card-top-row {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+}
+
+.user-review-card-top-row .icons {
+  padding-left: 200px;
+}
+
+.user-review-card-title {
+  display: flex;
+}
+
+.user-review-card-title p {
+  padding: 4px 0px 0px 10px;
+}
+
+.user-review-card-photo {
+  padding-right: 10px;
+}
+
+.user-review-card-photo img {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.user-review-card-info {
+  padding: 10px;
+  display: flex;
+
+}
+
+.user-review-card-info .booking-info {
+  text-align: right;
+}
+
+.icons-review {
+  text-align: right;
+}
+
+

@@ -30,7 +30,7 @@ class ReviewsController < ApplicationController
 
   def destroy
     @review.destroy
-    redirect_to property_path(@review.booking.property)
+    redirect_to user_dashboard_path(current_user)
   end
 
   private
