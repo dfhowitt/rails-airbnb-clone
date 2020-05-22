@@ -2,14 +2,20 @@ class UsersController < ApplicationController
   before_action :set_user
 
   def properties
-    @properties = Property.where(user: @user)
+    @properties = @user.properties
     @properties_with_stars = @properties.map do |property|
       {property: property, average_rating: stars(property)[:average_rating], blank_stars: stars(property)[:blank_stars]}
     end
   end
 
   def bookings
-    @bookings = Booking.where(user: @user)
+    @bookings = @user.bookings
+  end
+
+  def dashboard
+    @bookings = @user.bookings
+    @properties = @user.properties
+    @reviews = @user.reviews
   end
 
   private

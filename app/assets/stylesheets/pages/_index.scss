@@ -1,3 +1,27 @@
 // Import page-specific CSS files here.
 @import "home";
 @import "show";
+
+body {
+  background-color: $gray;
+  min-height: 100vh;
+  font-family: 'Heebo', sans-serif;
+  font-weight: 300;
+  z-index: -10;
+  padding-bottom: 60px;
+  position: relative;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: $lighter-gray;
+  font-family: 'Heebo', sans-serif;
+  font-weight: 700;
+}
+
+h2 {
+  padding: 22px 0px 10px 22px;
+}
+
+a:hover {
+  text-decoration: none;
+}

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :reviews, only: [:destroy]
 
   resources :users, only: [:show] do
+    get "dashboard", to: "users#dashboard"
     get "bookings", to: "users#bookings"
     get "properties", to: "users#properties"
   end
