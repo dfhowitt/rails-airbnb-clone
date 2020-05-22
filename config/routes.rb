@@ -16,5 +16,6 @@ Rails.application.routes.draw do
     get "dashboard", to: "users#dashboard"
     get "bookings", to: "users#bookings"
     get "properties", to: "users#properties"
+    get "reviews", to: "users#reviews"
   end
 end
