@@ -1,7 +1,17 @@
 <div class="container">
   <div class="property-header">
     <div class="property-title">
-      <h1 class="text-primary"><%= @property.name %></h1>
+      <h1 class="text-primary"><%= @property.name %>
+        <% unless @average_rating == nil %>
+          <% @average_rating.times do %>
+            <i class="fas fa-star"></i>
+      <% end %>
+
+        <% @blank_stars.times do %>
+          <i class="far fa-star"></i>
+        <% end %>
+      <% end %>
+    </h1>
     </div>
     <div class="property-links d-flex justify-content-between">
       <h5><%= @property.location %></h5>
@@ -15,6 +25,7 @@
   <% if @property.photos.attached? %>
     <%= render 'shared/img_carousel' %>
   <% end %>
+
 
   <div class="property-body mt-5">
     <div class="row">
@@ -33,36 +44,41 @@
           </ul>
         </div>
         <div class="property-desctription">
-          <%= @property.description %>
+          <%= @property.description.capitalize %>
+        </div>
+
+        <div class="property-booking-tool">
+          <div class="booking-tool-header">
+            <h2 class="p-0 my-3">Make a booking:</h2>
+            <div class="price-header">
+               <p class="text-success"> <%= number_to_currency(@property.price, unit: "£", precision: 0) %> / night </p>
+            </div>
+          </div>
+          <div class="dates w-100 pb-2">
+            <%= render 'bookings/form', booking: Booking.new, property: @property %>
+          </div>
         </div>
       </div>
 
-      <div class="property-booking-tool col-4 border">
-        <div class="booking-tool-header">
-          <h2 class="p-0 my-3">Make a booking:</h2>
-          <div class="price-header">
-             <p class="text-success"> <%= number_to_currency(@property.price, unit: "£") %> / night </p>
-          </div>
+      <div class="col-4">
+        <div class="reviews">
+          <% @property.reviews.each do |review|%>
+              <div class="review">
+                <div class="review-rating">
+                  <% review.rating.times do %>
+                    <i class="fas fa-star"></i>
+                  <% end %>
+                  <% blank_stars = 5 - review.rating %>
+                  <% blank_stars.times do %>
+                    <i class="far fa-star"></i>
+                  <% end %>
+                </div>
+                <div class="review-content">
+                <%= review.user.name%>: <%= review.content %>
+                </div>
+              </div>
+          <% end %>
         </div>
-        <div class="dates w-100 pb-2">
-          <%= render 'bookings/form', booking: Booking.new, property: @property %>
-        </div>
-<!-- TODO calculate price based on form input -->
-<!--         <div class="price">
-          <div class="price-per-night d-flex justify-content-between">
-            <p>£ <%= @property.price %> * Nights</p>
-            <p>Total price</p>
-          </div>
-          <div class="fees d-flex justify-content-between border-bottom">
-            <p>Fees</p>
-            <p>£35</p>
-          </div>
-          <div class="total-price d-flex justify-content-between">
-            <p>Total Due</p>
-            <p><%= @property.price  %> * # of nights</p>
-        </div>
-      </div>
-       -->
       </div>
     </div>
   </div>

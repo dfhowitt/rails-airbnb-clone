@@ -11,18 +11,28 @@ url('<%= image_path "banner.jpg", height: 400, crop: :fill %>'); background-size
 </div>
 
   <h2>Recently Added</h2>
-  <% new_properties = @properties.sort_by {|obj| obj.created_at} %>
-  <% new_properties = new_properties %>
+
 
   <div class="home-card-grid mx-4">
-    <%new_properties.each do |property|%>
-      <%= link_to property_path(property) do %>
-        <div class="homepage-property-card" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.2)), url('<%= cl_image_path property.photos[0].key, height: 300, width: 400, crop: :fill %>')">
-          <% if property.photos.attached? %>
+    <%@properties_with_stars.each do |property|%>
+      <%= link_to property_path(property[:property]) do %>
+        <div class="homepage-property-card" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.2)), url('<%= cl_image_path property[:property].photos[0].key, height: 300, width: 400, crop: :fill %>')">
+          <% if property[:property].photos.attached? %>
             <div class="homepage-property-card-info h-100">
               <div class="bottom text-right px-2 py-1">
-                <h5 class="mb-1"><%= property.name %></h3>
-                <p class="mb-0"><%= property.capacity%> guests · <%=property.property_type %> · <%= number_to_currency(property.price, unit: "£", precision: 0) %>/night</p>
+                <h5 class="mb-1"><%= property[:property].name %></h5>
+                <p class="mb-0"><%= property[:property].capacity%> guests · <%=property[:property].property_type %> · <%= number_to_currency(property[:property].price, unit: "£", precision: 0) %>/night</p>
+
+                <% unless property[:average_rating].nil? %>
+                  <p> <% property[:average_rating].times do %>
+                    <i class="fas fa-star"></i>
+                  <% end %>
+                  <% property[:blank_stars].times do %>
+                    <i class="far fa-star"></i>
+                  <% end %>
+                <% end %>
+                  </p>
+
               </div>
             </div>
           <% else %>
