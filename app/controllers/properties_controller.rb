@@ -8,15 +8,18 @@ class PropertiesController < ApplicationController
     query_coords = query_geocoder_results.first&.coordinates
 
     @properties = Property.geocoded.near(@query, 50)
-    @properties_with_stars = @properties.map do |property|
-      {property: property, average_rating: stars(property)[:average_rating], blank_stars: stars(property)[:blank_stars]}
-    end
     @results = true
 
     if @properties.empty? || !query_coords
       @results = false
       @properties = Property.geocoded
     end
+
+    if @query.nil?
+      @properties = Property.geocoded
+    end
+
+    @properties_with_stars = make_properties_with_stars(@properties)
 
     @markers = @properties.map do |property|
       {
@@ -75,6 +78,12 @@ class PropertiesController < ApplicationController
   end
 
   private
+
+  def make_properties_with_stars(properties)
+    properties.map do |property|
+      {property: property, average_rating: stars(property)[:average_rating], blank_stars: stars(property)[:blank_stars]}
+    end
+  end
 
   def stars(property)
     ratings = []
