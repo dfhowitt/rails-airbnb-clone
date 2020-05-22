@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :find_review, only: [:show, :edit, :update, :destroy]
-  before_action :find_booking, only: [:create, :new]
+  before_action :find_booking, only: [:create, :new, :edit]
 
   def new
     @review = Review.new
@@ -22,7 +22,7 @@ class ReviewsController < ApplicationController
 
   def update
     if @review.update(review_params)
-      redirect_to review_path(@review)
+      redirect_to user_dashboard_path(current_user)
     else
       render :edit
     end

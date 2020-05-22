@@ -4,7 +4,7 @@
   <hr>
 
 <div class="container">
-  <%= simple_form_for [@booking, @review], method: :post do |f| %>
+  <%= simple_form_for [@booking, @review] do |f| %>
     <%= f.input :content, label: false, as: :text %>
     <%= f.input :rating, as: :select, collection: (1..5) %>
     <%= f.submit "Submit", {class: "btn btn-primary w-100 mb-2"} %>
