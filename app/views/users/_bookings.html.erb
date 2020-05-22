@@ -1,5 +1,5 @@
 <% @bookings.each do |booking| %>
-  <%= link_to user_dashboard_path(current_user) do %>
+  <%= link_to booking_path(booking) do %>
     <div class="property-booking-card mx-0 mb-3">
       <% if booking.property.photos.attached? %>
       <div class="property-booking-card-photo">
