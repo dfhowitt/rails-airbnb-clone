@@ -2,11 +2,17 @@ class UsersController < ApplicationController
   before_action :set_user
 
   def properties
-    @properties = Property.where(user: @user)
+    @properties = @user.properties
   end
 
   def bookings
-    @bookings = Booking.where(user: @user)
+    @bookings = @user.bookings
+  end
+
+  def dashboard
+    @bookings = @user.bookings
+    @properties = @user.properties
+    @reviews = @user.reviews
   end
 
   private
