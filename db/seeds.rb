@@ -141,4 +141,3 @@ bookings.each do |booking|
     user: User.all.sample
   )
 end
-

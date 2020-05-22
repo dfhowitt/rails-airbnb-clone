@@ -1,12 +1,17 @@
 <h2>Bookings for <%= @property.name %> <%= @property.property_type %></h2>
 <div class="container">
   <% @property.bookings.each do |booking| %>
-  <div class="property-booking-card">
-    <h3><%= booking.user.name %> · <%=@property.capacity%> guests</h3>
-    <p><%= booking.user.email %></p>
-    <% length_of_stay = booking.end_date - booking.start_date %>
-    <% total_price = length_of_stay.to_i * @property.price %>
-    <h5> <%= number_to_currency(total_price, unit: "£", precision: 0) %> - <%= length_of_stay.to_i %> nights </h5>
+  <div class="host-booking-information-card">
+    <div class="host-booking-card-product-infos-1">
+      <% length_of_stay = booking.end_date - booking.start_date %>
+      <% total_price = length_of_stay.to_i * @property.price %>
+      <h3><%= booking.user.name %> · <%=@property.capacity%> guests · <%= length_of_stay.to_i %> nights</h3>
+      <p><%= booking.user.email %></p>
     </div>
+      <div class="host-booking-card-product-infos-2">
+        <h4> <%=  booking.start_date %> to <%= booking.end_date %></h4>
+        <h5> <%= number_to_currency(total_price, unit: "£", precision: 0) %> </h5>
+      </div>
+  </div>
   <% end %>
 </div>
