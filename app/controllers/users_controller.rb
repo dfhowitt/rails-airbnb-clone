@@ -15,12 +15,14 @@ class UsersController < ApplicationController
   def dashboard
     @bookings = @user.bookings
     @properties = @user.properties
+    @properties_with_stars = @properties.map do |property|
+      {property: property, average_rating: stars(property)[:average_rating], blank_stars: stars(property)[:blank_stars]}
+    end
     @reviews = @user.reviews
   end
 
   def reviews
-    @reviews = Review.where(user_id: @user)
-
+    @reviews = @user.reviews
   end
 
   private

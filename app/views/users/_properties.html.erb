@@ -1,0 +1,77 @@
+<div class="icons">
+  <h3>Add a property</h3>
+      <%= link_to new_property_path(@property) do %>
+      <i class="fas fa-plus"></i>
+      <% end %>
+</div>
+<% @properties_with_stars.each do |property| %>
+<%= link_to property_bookings_path(property[:property]) do %>
+<div class="user-property-card mx-0">
+  <% if property[:property].photos.attached? %>
+    <div class="user-property-card-photo"><%= cl_image_tag property[:property].photos[0].key, height: 150, width: 200, crop: :fill %>
+    </div>
+  <% end %>
+  <div class="user-property-card-info">
+    <div class="user-property-card-top-row">
+      <div class="user-property-card-title">
+      <h3><%= property[:property].name%> </h3>
+        <% unless property[:average_rating].nil? %>
+          <p> <% property[:average_rating].times do %>
+            <i class="fas fa-star"></i>
+          <% end %>
+          <% property[:blank_stars].times do %>
+            <i class="far fa-star"></i>
+          <% end %>
+        <% end %>
+        </p>
+      </div>
+
+      <div class="icons">
+        <%= link_to edit_property_path(property[:property]) do %>
+          <i class="fas fa-edit"></i>
+        <% end %>
+        <%= link_to property_path(property[:property]), method: :delete, data:
+          { confirm: 'Are you certain you want to delete this?' } do %>
+          <i class="fas fa-trash"></i>
+        <% end %>
+      </div>
+
+    </div>
+    <h5><%= property[:property].capacity%> guests · <%=property[:property].property_type %> · <%= number_to_currency(property[:property].price, unit: "£", precision: 0) %>/night</h5>
+    <p> <%= property[:property].description.capitalize %></p>
+  </div>
+</div>
+<% end %>
+<% end %>
+
+
+
+
+
+
+      <!-- <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+        Delete Property
+      </button> -->
+
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title-properties" id="exampleModalLabel">Are you sure?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body-properties">
+          Deleting this property will erase all current bookings!
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary"><%#= link_to "Delete Property", properties_path(property), method: :delete %></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+ -->

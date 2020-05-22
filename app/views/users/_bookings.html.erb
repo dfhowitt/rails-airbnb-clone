@@ -1,0 +1,43 @@
+<% @bookings.each do |booking| %>
+  <%= link_to booking_path(booking) do %>
+    <div class="property-booking-card mx-0 mb-3">
+      <% if booking.property.photos.attached? %>
+      <div class="property-booking-card-photo">
+          <%= cl_image_tag booking.property.photos.first.key, height: 150, width: 200, crop: :fill %>
+      </div>
+      <% end %>
+      <div class="property-booking-card-product-infos">
+        <% length = booking.end_date - booking.start_date %>
+        <% total_price = booking.property.price * length %>
+        <h3>Your Booking for <%= booking.property.name %></h3>
+        <h5>Check-in: <%= booking.start_date %> </h5>
+        <h5><%= booking.property.capacity%> guests · <%=booking.property.property_type %> · <%= number_to_currency(total_price, unit: "£", precision: 0) %> total · <%= number_to_currency(booking.property.price, unit: "£", precision: 0) %>/night</h5>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+
+  <!-- Modal -->
+  <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Cancelling this booking without 48hr notice will cost you your deposit!
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Cancel Booking</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+ -->
