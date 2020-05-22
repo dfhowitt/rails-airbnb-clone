@@ -18,6 +18,10 @@ class UsersController < ApplicationController
     @reviews = @user.reviews
   end
 
+  def reviews
+    @reviews = Review.where(user_id: @user)
+  end
+
   private
 
   def set_user
