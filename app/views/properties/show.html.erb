@@ -27,43 +27,50 @@
   <% end %>
 
 
-  <div class="property-body mt-5">
-    <div class="row">
-      <div class="property-details col-8">
-        <div class="property-info border-bottom">
-          <h3>Host: <%= @property.user.name%> </h3>
+  <div class="property-title mt-3">
+    <div class="property-details">
+
+      <div class="property-info border-bottom">
+        <h3>Host: <%= @property.user.name%> </h3>
+        <div class="d-flex justify-content-between">
           <ul class="property-list">
             <li><%= @property.property_type %></li>
             <li>Capacity: <%= @property.capacity %></li>
           </ul>
           <ul class="service-list">
             <% @property.services.each do |service| %>
-              <li><%= service.name %></li>
-              <i class="<%= service.icon %>"></i>
+              <li class="m-1"><%= service.name %>
+                <i class="<%= service.icon %>"></i>
+              </li>
             <% end %>
           </ul>
         </div>
-        <div class="property-desctription">
-          <%= @property.description.capitalize %>
-        </div>
-
-        <div class="property-booking-tool">
-          <div class="booking-tool-header">
-            <h2 class="p-0 my-3">Make a booking:</h2>
-            <div class="price-header">
-               <p class="text-success"> <%= number_to_currency(@property.price, unit: "£", precision: 0) %> / night </p>
-            </div>
-          </div>
-          <div class="dates w-100 pb-2">
-            <%= render 'bookings/form', booking: Booking.new, property: @property %>
-          </div>
-        </div>
       </div>
 
-      <div class="col-4">
-        <div class="reviews">
-          <% @property.reviews.each do |review|%>
-              <div class="review">
+      <div class="row">
+        <div class="col-7">
+          <div class="property-desctription m-3">
+            <%= @property.description.capitalize %>
+          </div>
+
+          <div class="container property-booking-tool">
+            <div class="booking-tool-header">
+
+              <h2 class="p-0 my-3">Make a booking:</h2>
+              <div class="price-header">
+                 <p class="text-success"> <%= number_to_currency(@property.price, unit: "£", precision: 0) %> / night </p>
+              </div>
+            </div>
+            <div class="dates w-100 pb-2">
+              <%= render 'bookings/form', booking: Booking.new, property: @property %>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-5">
+          <div class="reviews ml-3">
+            <% @property.reviews.each do |review|%>
+              <div class="review my-3">
                 <div class="review-rating">
                   <% review.rating.times do %>
                     <i class="fas fa-star"></i>
@@ -77,9 +84,11 @@
                 <%= review.user.name%>: <%= review.content %>
                 </div>
               </div>
-          <% end %>
+            <% end %>
+          </div>
         </div>
       </div>
+
     </div>
   </div>
 </div>
