@@ -141,6 +141,3 @@ bookings.each do |booking|
     user: User.all.sample
   )
 end
-
-User.new(name: "Dan Howitt", email: "dfhowitt@gmail.com", password: "123456")
-
