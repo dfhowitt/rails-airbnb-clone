@@ -17,8 +17,8 @@
       <h2>Check-out: <%= @booking.end_date %></h2>
     </div>
     <div class="price-info">
-      <h3><%= number_to_currency(@total_price, unit: "£") %></h3>
-      <p><%= number_to_currency(@booking.property.price, unit: "£") %> / night</p>
+      <h3><%= number_to_currency(@total_price, unit: "£", precision: 0) %></h3>
+      <p><%= number_to_currency(@booking.property.price, unit: "£", precision: 0) %> / night</p>
     </div>
   </div>
 
