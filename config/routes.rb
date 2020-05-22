@@ -15,5 +15,6 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     get "bookings", to: "users#bookings"
     get "properties", to: "users#properties"
+    get "reviews", to: "users#reviews"
   end
 end

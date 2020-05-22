@@ -12,6 +12,10 @@ class UsersController < ApplicationController
     @bookings = Booking.where(user: @user)
   end
 
+  def reviews
+    @reviews = Review.where(user_id: @user)
+  end
+
   private
 
   def set_user
