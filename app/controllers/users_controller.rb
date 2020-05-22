@@ -20,6 +20,7 @@ class UsersController < ApplicationController
 
   def reviews
     @reviews = Review.where(user_id: @user)
+
   end
 
   private
