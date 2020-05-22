@@ -22,16 +22,17 @@ url('<%= image_path "banner.jpg", height: 400, crop: :fill %>'); background-size
               <div class="bottom text-right px-2 py-1">
                 <h5 class="mb-1"><%= property[:property].name %></h5>
                 <p class="mb-0"><%= property[:property].capacity%> guests · <%=property[:property].property_type %> · <%= number_to_currency(property[:property].price, unit: "£", precision: 0) %>/night</p>
-
+                <div class="home-stars mt-1">
                 <% unless property[:average_rating].nil? %>
-                  <p> <% property[:average_rating].times do %>
+                  <% property[:average_rating].times do %>
                     <i class="fas fa-star"></i>
                   <% end %>
                   <% property[:blank_stars].times do %>
                     <i class="far fa-star"></i>
                   <% end %>
                 <% end %>
-                  </p>
+
+                </div>
 
               </div>
             </div>
