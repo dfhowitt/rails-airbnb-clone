@@ -9,6 +9,23 @@
   height: 150px;
 }
 
+.user-property-card-top-row {
+  display: flex;
+  position: relative;
+}
+
+.user-property-card-top-row .icons {
+  padding-left: 200px;
+}
+
+.user-property-card-title {
+  display: flex;
+}
+
+.user-property-card-title p {
+  padding: 4px 0px 0px 10px;
+}
+
 .user-property-card-photo {
   padding-right: 10px;
 }

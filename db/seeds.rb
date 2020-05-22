@@ -142,3 +142,5 @@ bookings.each do |booking|
   )
 end
 
+User.new(name: "Dan Howitt", email: "dfhowitt@gmail.com", password: "123456")
+
