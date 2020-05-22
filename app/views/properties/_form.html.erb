@@ -37,9 +37,9 @@
       <input type="hidden" name="property[service_ids][]" value="">
       <div class="service-choices">
         <% Service.all.each do |service| %>
-        <div class="service-choice mb-2">
-          <input type="checkbox" class="hidden" value="<%= service.id %>" name="property[service_ids][]" id="property_service_ids_<%= service.id %>">
-          <label for="property_service_ids_<%= service.id %>" class="">
+        <div class="service-choice d-flex justify-content-around mb-2">
+          <input type="checkbox" class="d-none" value="<%= service.id %>" name="property[service_ids][]" id="property_service_ids_<%= service.id %>">
+          <label for="property_service_ids_<%= service.id %>" class="mb-0">
             <%= service.name %>
             <i class="<%= service.icon %>"></i>
           </label>
