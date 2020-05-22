@@ -128,6 +128,7 @@ properties.each do |property|
   end
 end
 
+
 puts "creating reviews"
 
 bookings = Booking.all
@@ -140,11 +141,4 @@ bookings.each do |booking|
     user: User.all.sample
   )
 end
-
-
-
-
-
-
-
 
