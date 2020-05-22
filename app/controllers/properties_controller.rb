@@ -28,7 +28,6 @@ class PropertiesController < ApplicationController
   end
 
   def show
-
     @average_rating = stars(@property)[:average_rating]
     @blank_stars = stars(@property)[:blank_stars]
   end
@@ -72,7 +71,7 @@ class PropertiesController < ApplicationController
 
   def destroy
     @property.destroy
-    redirect_to properties_path
+    redirect_to user_properties_path(current_user)
   end
 
   private

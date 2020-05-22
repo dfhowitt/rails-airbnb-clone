@@ -5,20 +5,33 @@
         <i class="fas fa-plus"></i>
         <% end %>
   </div>
-  <% @properties.each do |property| %>
-  <%= link_to property_bookings_path(property) do %>
+  <% @properties_with_stars.each do |property| %>
+  <%= link_to property_bookings_path(property[:property]) do %>
   <div class="user-property-card">
-    <% if property.photos.attached? %>
-      <div class="user-property-card-photo"><%= cl_image_tag property.photos[0].key, height: 150, width: 200, crop: :fill %>
+    <% if property[:property].photos.attached? %>
+      <div class="user-property-card-photo"><%= cl_image_tag property[:property].photos[0].key, height: 150, width: 200, crop: :fill %>
       </div>
     <% end %>
     <div class="user-property-card-info">
-      <h3><%= property.name%></h3>
-      <h5><%= property.capacity%> guests · <%=property.property_type %> · £<%= property.price.to_i %>/night</h5>
-      <p> <%= property.description.capitalize %></p>
+      <h3><%= property[:property].name%></h3>
+      <h5><%= property[:property].capacity%> guests · <%=property[:property].property_type %> · £<%= property[:property].price.to_i %>/night</h5>
+      <p> <%= property[:property].description.capitalize %></p>
+       <% unless property[:average_rating].nil? %>
+          <p> <% property[:average_rating].times do %>
+            <i class="fas fa-star"></i>
+          <% end %>
+          <% property[:blank_stars].times do %>
+            <i class="far fa-star"></i>
+          <% end %>
+        <% end %>
+        </p>
       <div class="icons">
-        <%= link_to edit_property_path(property) do %>
-        <i class="fas fa-edit"></i>
+        <%= link_to edit_property_path(property[:property]) do %>
+          <i class="fas fa-edit"></i>
+        <% end %>
+        <%= link_to property_path(property[:property]), method: :delete, data:
+          { confirm: 'Are you certain you want to delete this?' } do %>
+          <i class="fas fa-trash"></i>
         <% end %>
       </div>
     </div>
